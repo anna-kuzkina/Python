@@ -2,9 +2,9 @@
 # Числа запрашивать у пользователя, предусмотреть обработку ситуации деления на ноль.
 def division_f(num_1, num_2):
     if num_2 == 0:
-        print("На ноль делить нельзя!")
+        return "На ноль делить нельзя!"
     else:
-        print(num_1 / num_2)
+        return num_1 / num_2
 
 
-division_f(int(input("Введите 1-ое число: ")), int(input("Введите 2-ое число: ")))
+print(division_f(int(input("Введите 1-ое число: ")), int(input("Введите 2-ое число: "))))
