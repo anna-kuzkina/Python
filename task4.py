@@ -7,7 +7,49 @@
 def my_func(x, y):
     return x ** y
 
-def my_func_2(x, y):
-    pass
 
-print(my_func(float(input("Введите действительное положительное число x: ")), int(input("Введите целое отрицательное число y: "))))
+def enter_x(tip):
+    """
+    проверка вводимого числа х: действительное положительное число
+    """
+    input_num = None
+    while input_num is None:
+        input_num = input(tip)
+        try:
+            input_num = float(input_num)
+        except ValueError:
+            print('Ошибка ввода x!')
+            input_num = None
+            continue
+        if input_num > 0:
+            return input_num
+        else:
+            print('Ошибка ввода x!')
+            input_num = None
+    return input_num
+
+
+def enter_y(tip):
+    """
+    проверка вводимого числа y: целое отрицательное число
+    """
+    input_num = None
+    while input_num is None:
+        input_num = input(tip)
+        try:
+            input_num = int(input_num)
+        except ValueError:
+            print('Ошибка ввода y!')
+            input_num = None
+            continue
+        if input_num < 0:
+            return input_num
+        else:
+            print('Ошибка ввода x!')
+            input_num = None
+    return input_num
+
+
+x = enter_x("Введите действительное положительное число x: ")
+y = enter_y("Введите целое отрицательное число y: ")
+print(my_func(x, y))
