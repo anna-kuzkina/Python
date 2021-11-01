@@ -24,29 +24,35 @@ class Cell:
         self.numbers = numbers
 
     def make_order(self, len_row):
-        result = ["*" * len_row * (self.numbers // len_row)]
+        result = []
+        for _ in range(self.numbers // len_row):
+            result.append("*" * len_row)
         if self.numbers % len_row:
             result.append("*" * (self.numbers % len_row))
         return '\n'.join(result)
 
     def __add__(self, other):
-        return f'Sum of cells = {Cell(self.numbers + other.numbers)}'
+        return Cell(self.numbers + other.numbers)
 
     def __sub__(self, other):
         if self.numbers < other.numbers:
             raise ValueError("There are fewer cells in the first cell than in the second")
-        return f'Subtraction of cells = {Cell(self.numbers - other.numbers)}'
+        return Cell(self.numbers - other.numbers)
 
     def __mul__(self, other):
-        return f'Multiplication of cells = {Cell(self.numbers * other.numbers)}'
+        return Cell(self.numbers * other.numbers)
 
     def __truediv__(self, other):
-        return f"Division of cells = {Cell(self.numbers // other.numbers)}"
+        return Cell(self.numbers / other.numbers)
+
+    def __str__(self):
+        return str(self.numbers)
 
 
-c_1 = Cell(34)
+c_1 = Cell(12)
 c_2 = Cell(10)
 print(c_1 + c_2)
 print(c_1 - c_2)
 print(c_1 * c_2)
-print(c_1 // c_2)
+print(c_1 / c_2)
+print(c_1.make_order(5))
